@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1</title>
+    <script src="tableau.html"></script>
+</head>
+<body>
+    <div #container>
+        <form method="GET" >
+            <h1>Exercice 1</h1>
+            Colonnes : <input type="number" id="colone">
+            Lignes : <input type="number" id="ligne">
+            <button style="color:azure; background-color:brown;" type="submit">Afficher le tableau</button>
+        </form>
+    </div><br><br>
+    <div id="content">
+
+    </div>
+          
+     <script>
+
+
+        let ligne , colone;
+        document.forms[0].addEventListener('submit' , function (e) {
+            e.preventDefault();
+
+            ligne = document.getElementById('ligne').value
+            colone = document.getElementById('colone').value
+            document.querySelector('#content').innerHTML=makeTable(ligne,colone)
+        })
+
+        function makeTable(lignes,colones){
+            var content="<table border='1'>"
+            for(var i=0;i<lignes;i++){
+                content=content+"<tr>";
+                for(var j=0;j<colones;j++){
+                    content=content+"<td> td 1 </td>";
+                }
+                content=content+"</tr>";
+            }
+            content=content+"</table>";
+            return content
+        }
+
+     </script>
+
+</body>
+</html>
