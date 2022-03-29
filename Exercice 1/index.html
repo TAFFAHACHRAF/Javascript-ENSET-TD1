@@ -6,46 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercice 1</title>
     <script src="tableau.html"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
-<body>
-    <div #container>
-        <form method="GET" >
+
+<body class="bgcpmp">
+    <div #container  style="padding-left: 30%;">
+        <form method="GET" style="margin-top:5%;">
             <h1>Exercice 1</h1>
-            Colonnes : <input type="number" id="colone">
-            Lignes : <input type="number" id="ligne">
-            <button style="color:azure; background-color:brown;" type="submit">Afficher le tableau</button>
+            Colonnes : <input type="number" id="colone" class="col form-control w-50">
+            Lignes : <input type="number" id="ligne" class="col form-control w-50">
+            <button class="col btn btn-success center" style="margin-top:2%;" type="submit">Afficher le tableau</button>
         </form>
-    </div><br><br>
-    <div id="content">
-
     </div>
-          
+    <div id="content" style="margin-top:5%;padding-left: 7%;">
+        <table class='table col'>
+
+        </table>
+    </div>   
+
      <script>
-
-
         let ligne , colone;
         document.forms[0].addEventListener('submit' , function (e) {
             e.preventDefault();
 
             ligne = document.getElementById('ligne').value
             colone = document.getElementById('colone').value
-            document.querySelector('#content').innerHTML=makeTable(ligne,colone)
+            document.querySelector('#content table').innerHTML=makeTable(ligne,colone)
         })
 
         function makeTable(lignes,colones){
-            var content="<table border='1'>"
+            if (lignes<0 || colones<0)
+                return 0
+
+            var content=""
             for(var i=0;i<lignes;i++){
                 content=content+"<tr>";
                 for(var j=0;j<colones;j++){
-                    content=content+"<td> td 1 </td>";
+                    content=content+"<td> "+i*j+" </td>";
                 }
                 content=content+"</tr>";
             }
-            content=content+"</table>";
             return content
         }
-
      </script>
-
 </body>
 </html>
